@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="448.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
+   <children>
+      <TabPane fx:id="tabPane" onMouseClicked="#tabPaneOnChange" prefHeight="448.0" prefWidth="427.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab fx:id="playersTab" text="players">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="playersTableView" layoutY="1.0" onMouseClicked="#onPlayersTableClick" prefHeight="368.0" prefWidth="427.0">
+                          <columns>
+                            <TableColumn fx:id="playerIdTableColumn" prefWidth="75.0" text="id_code" />
+                            <TableColumn fx:id="playerNameTableColumn" prefWidth="108.20001983642578" text="name" />
+                              <TableColumn fx:id="playerAmountTableColumn" prefWidth="73.79998779296875" text="characters" />
+                              <TableColumn fx:id="playerStatusTableColumn" prefWidth="168.5999755859375" text="status" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="p_id_TF" layoutY="369.0" prefHeight="26.0" prefWidth="79.0" />
+                        <TextField fx:id="p_name_TF" layoutX="79.0" layoutY="369.0" prefHeight="26.0" prefWidth="101.0" />
+                        <TextField fx:id="p_amount_TF" editable="false" layoutX="181.0" layoutY="369.0" prefHeight="26.0" prefWidth="71.0" />
+                        <TextField fx:id="p_status_TF" layoutX="252.0" layoutY="369.0" prefHeight="26.0" prefWidth="175.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="characters">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="characterTableView" onMouseClicked="#onCharactersTableClick" prefHeight="369.0" prefWidth="427.0">
+                          <columns>
+                            <TableColumn fx:id="characterIdTableColumn" prefWidth="75.0" text="id_code" />
+                            <TableColumn fx:id="characterOwnerTableColumn" prefWidth="75.0" text="owner_id" />
+                              <TableColumn fx:id="characterNameTableColumn" prefWidth="105.20001220703125" text="name" />
+                              <TableColumn fx:id="characterClassTableColumn" prefWidth="100.4000244140625" text="class" />
+                              <TableColumn fx:id="characterLvlTableColumn" prefWidth="70.5999755859375" text="lvl" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="c_id_TF" layoutY="370.0" prefHeight="26.0" prefWidth="74.0" />
+                        <TextField fx:id="c_owner_TF" layoutX="75.0" layoutY="370.0" prefHeight="26.0" prefWidth="78.0" />
+                        <TextField fx:id="c_name_TF" layoutX="154.0" layoutY="370.0" prefHeight="26.0" prefWidth="104.0" />
+                        <TextField fx:id="c_class_TF" layoutX="258.0" layoutY="370.0" prefHeight="26.0" prefWidth="99.0" />
+                        <TextField fx:id="c_lvl_TF" layoutX="357.0" layoutY="370.0" prefHeight="26.0" prefWidth="67.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Button fx:id="refreshButton" layoutX="470.0" layoutY="266.0" mnemonicParsing="false" onAction="#refreshButtonClicked" prefHeight="52.0" prefWidth="70.0" text="ReFresh" />
+      <Button layoutX="427.0" layoutY="399.0" mnemonicParsing="false" onAction="#addButtonClicked" text="ADD" />
+      <Button layoutX="479.0" layoutY="399.0" mnemonicParsing="false" onAction="#delButtonClicked" text="DELL" />
+      <Button layoutX="534.0" layoutY="399.0" mnemonicParsing="false" onAction="#changeButtonClicked" text="CHANGE" />
+      <TextField fx:id="findField" layoutX="437.0" layoutY="141.0" />
+      <SplitMenuButton fx:id="findButton" layoutX="436.0" layoutY="166.0" mnemonicParsing="false" text="Find">
+        <items>
+          <MenuItem fx:id="name_p_menu" mnemonicParsing="false" onAction="#find_p_nameClicked" text="by name" />
+          <MenuItem fx:id="class_c_menu" mnemonicParsing="false" onAction="#find_classClicked" text="by class" visible="false" />
+            <MenuItem fx:id="amount_p_menu" mnemonicParsing="false" onAction="#find_amountClicked" text="by amount" />
+            <MenuItem fx:id="name_c_menu" mnemonicParsing="false" onAction="#find_c_nameClicked" text="by name" visible="false" />
+        </items>
+      </SplitMenuButton>
+      <SplitMenuButton layoutX="455.0" layoutY="62.0" mnemonicParsing="false" text="ClearTables">
+        <items>
+          <MenuItem fx:id="clearPlayers" mnemonicParsing="false" onAction="#clearPlayersClicked" text="Players" />
+          <MenuItem fx:id="clearCharacters" mnemonicParsing="false" onAction="#clearCharactersClicked" text="Characters" />
+            <MenuItem fx:id="clearAll" mnemonicParsing="false" onAction="#clearAllClicked" text="all" />
+        </items>
+      </SplitMenuButton>
+      <CheckBox fx:id="andDeleteCheck" contentDisplay="RIGHT" layoutX="505.0" layoutY="170.0" mnemonicParsing="false" text="and Delete" />
+      <MenuBar layoutX="426.0" layoutY="1.0" prefHeight="26.0" prefWidth="175.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="DataBase">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#refreshButtonClicked" text="ReFresh" />
+              <MenuItem mnemonicParsing="false" onAction="#createDB" text="Create" />
+                  <MenuItem mnemonicParsing="false" onAction="#dropDBclicked" text="Drop" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Table">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#clearPlayersClicked" text="Clear players" />
+                  <MenuItem mnemonicParsing="false" onAction="#clearCharactersClicked" text="Clear characters" />
+                  <MenuItem mnemonicParsing="false" onAction="#clearAllClicked" text="Clear all" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#showHelpMessage" text="Show Hepl" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
